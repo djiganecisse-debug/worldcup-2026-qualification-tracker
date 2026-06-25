@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Le code doit compiler (stdlib uniquement, aucune dépendance)
+      - name: Compile
+        run: python -m py_compile senegal_wc_tracker.py
+
+      # La logique pure (classement, départages, seuils) doit passer
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      # Fumée : un cycle réel tourne de bout en bout (best-effort, dépend de données live)
+      - name: Smoke run (dry-run)
+        continue-on-error: true
+        run: python senegal_wc_tracker.py --dry-run --sims 2000
