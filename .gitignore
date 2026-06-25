@@ -1,0 +1,12 @@
+# Données d'exécution (état, logs, cache Elo) — local only
+data/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
