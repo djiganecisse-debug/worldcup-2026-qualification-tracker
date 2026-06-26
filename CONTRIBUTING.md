@@ -7,7 +7,7 @@ possible.
 ## Lancer en local
 
 ```bash
-git clone https://github.com/djiganecisse-debug/worldcup-2026-qualification-tracker.git
+git clone https://github.com/djiganecisse/worldcup-2026-qualification-tracker.git
 cd worldcup-2026-qualification-tracker
 python3 senegal_wc_tracker.py --dry-run        # calcule et affiche, n'envoie rien
 ```
